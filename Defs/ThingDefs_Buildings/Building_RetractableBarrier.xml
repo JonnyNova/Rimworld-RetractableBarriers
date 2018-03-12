@@ -53,6 +53,21 @@
             <Component>1</Component>
         </costList>
         <comps>
+            <li Class="FrontierDevelopments.RetractableBarriers.CompProperties.CompProperties_RetractableBarrier">
+                <upBlockLight>true</upBlockLight>
+                <upFillPercentage>1.0</upFillPercentage>
+                <upHideAtSnowDepth>99999</upHideAtSnowDepth>
+                <upTraversability>PassThroughOnly</upTraversability>
+                <upPathCost>100</upPathCost>
+
+                <downBlockLight>false</downBlockLight>
+                <downFillPercentage>0.0</downFillPercentage>
+                <downHideAtSnowDepth>0.0</downHideAtSnowDepth>
+                <downTraversability>Standable</downTraversability>
+                <downPathCost>1</downPathCost>
+
+                <toggleToilDuration>0</toggleToilDuration>
+            </li>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
                 <basePowerConsumption>5</basePowerConsumption>

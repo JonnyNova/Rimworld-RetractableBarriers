@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="RetractableBarriers\Buildings\Building_RetractableBarrier.cs" />
     <Compile Include="RetractableBarriers\Graphics\Graphic_RetractableBarrier.cs" />
+    <Compile Include="RetractableBarriers\CompProperties\CompProperties_RetractableBarrier.cs" />
+    <Compile Include="RetractableBarriers\Comps\Comp_RetractableBarrier.cs" />
     <Compile Include="RetractableBarriers\Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

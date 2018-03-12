@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using FrontierDevelopments.RetractableBarriers.Comps;
 using FrontierDevelopments.RetractableBarriers.Graphics;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace FrontierDevelopments.RetractableBarriers.Buildings
@@ -11,56 +11,53 @@ namespace FrontierDevelopments.RetractableBarriers.Buildings
     {
         private CompPowerTrader _powerTrader;
 
-        private bool _extended;
-        private bool _wantExtended;
         private bool _retractOnPowerFailure;
+
+        private Comp_RetractableBarrier _barrier;
         
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
             _powerTrader = GetComp<CompPowerTrader>();
+            _barrier = GetComp<Comp_RetractableBarrier>();
 
-            _powerTrader.powerStartedAction = () => 
-                _extended = _wantExtended;
+            _powerTrader.powerStartedAction = () =>
+                _barrier.Extended = _barrier.WantExtended;
             _powerTrader.powerStoppedAction = () =>
             {
-                if (_retractOnPowerFailure) _extended = false;
+                if (_retractOnPowerFailure) _barrier.Extended = false;
             };
         }
 
-        public bool Extended => _extended;
+        public bool Extended => _barrier.Extended;
 
         private void Toggle()
         {
-            _wantExtended = !_wantExtended;
+            _barrier.ToggleWant();
             if (_powerTrader?.PowerOn != true) return;
-            if (_extended)
+            if (_barrier.Extended)
                 Retract();
             else
                 Extend();
-            _extended = !_extended;
+            _barrier.Toggle();
         }
 
         private void Extend()
         {
-            def.graphicData.shadowData.volume = new Vector3(1.0f, 1.0f, 1.0f);
-            def.blockLight = true;
-            def.fillPercent = 1.0f;
-            def.hideAtSnowDepth = 0.0f;
-            def.passability = Traversability.PassThroughOnly;
-            def.pathCost = 100;
-            def.fillPercent = 1.0f;
+            def.blockLight = _barrier.Props.upBlockLight;
+            def.fillPercent = _barrier.Props.upFillPercentage;
+            def.hideAtSnowDepth = _barrier.Props.upHideAtSnowDepth;
+            def.passability = _barrier.Props.upTraversability;
+            def.pathCost = _barrier.Props.upPathCost;
         }
 
         private void Retract()
         {
-            def.graphicData.shadowData.volume = new Vector3(0, 0, 0);
-            def.blockLight = false;
-            def.fillPercent = 0.0f;
-            def.hideAtSnowDepth = 0.25f;
-            def.passability = Traversability.Standable;
-            def.pathCost = 0;
-            def.fillPercent = 1.0f;
+            def.blockLight = _barrier.Props.downBlockLight;
+            def.fillPercent = _barrier.Props.downFillPercentage;
+            def.hideAtSnowDepth = _barrier.Props.downHideAtSnowDepth;
+            def.passability = _barrier.Props.downTraversability;
+            def.pathCost = _barrier.Props.downPathCost;
         }
 
         public override string GetInspectString()
@@ -91,7 +88,7 @@ namespace FrontierDevelopments.RetractableBarriers.Buildings
                     icon = Textures.BarrierHorizExtended,
                     defaultLabel = "fd.barriers.ui.extend.label".Translate(),
                     defaultDesc = "fd.barriers.ui.extend.desc".Translate(),
-                    isActive = () => _wantExtended,
+                    isActive = () => _barrier.WantExtended,
                     toggleAction = () => Toggle()
                 };
                 
@@ -108,8 +105,6 @@ namespace FrontierDevelopments.RetractableBarriers.Buildings
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref _extended, "extended");
-            Scribe_Values.Look(ref _wantExtended, "wantExtended");
             Scribe_Values.Look(ref _retractOnPowerFailure, "retractOnPowerFailure");
             base.ExposeData();
         }
