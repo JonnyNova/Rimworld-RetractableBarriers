@@ -9,8 +9,6 @@ namespace FrontierDevelopments.RetractableBarriers.Buildings
 {
     public class Building_RetractableBarrier : Building
     {
-        private const float FillPercent = 0.8f;
-        
         private CompPowerTrader _powerTrader;
 
         private bool _extended;
@@ -45,13 +43,13 @@ namespace FrontierDevelopments.RetractableBarriers.Buildings
 
         private void Extend()
         {
-            def.graphicData.shadowData.volume = new Vector3(FillPercent, FillPercent, FillPercent);
+            def.graphicData.shadowData.volume = new Vector3(1.0f, 1.0f, 1.0f);
             def.blockLight = true;
             def.fillPercent = 1.0f;
             def.hideAtSnowDepth = 0.0f;
             def.passability = Traversability.PassThroughOnly;
             def.pathCost = 100;
-            def.fillPercent = FillPercent;
+            def.fillPercent = 1.0f;
         }
 
         private void Retract()
