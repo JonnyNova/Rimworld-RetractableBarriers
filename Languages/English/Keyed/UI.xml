@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <fd.barriers.ui.inspect.state>State</fd.barriers.ui.inspect.state>
+    <fd.barriers.ui.inspect.extended>Extended</fd.barriers.ui.inspect.extended>
+    <fd.barriers.ui.inspect.retracted>Retracted</fd.barriers.ui.inspect.retracted>
+    <fd.barriers.ui.inspect.offline>Offline: cannot change position</fd.barriers.ui.inspect.offline>
+    
+    <fd.barriers.ui.extend.label>Set extend</fd.barriers.ui.extend.label>
+    <fd.barriers.ui.extend.desc>Sets the barrier to raise</fd.barriers.ui.extend.desc>
+    
+    <fd.barriers.ui.retract.label>Retract on power failure</fd.barriers.ui.retract.label>
+    <fd.barriers.ui.retract.desc>If enabled the barrier will automatically retract itself on power failure</fd.barriers.ui.retract.desc>
+</LanguageData>

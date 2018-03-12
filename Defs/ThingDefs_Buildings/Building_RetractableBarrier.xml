@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef>
+
+        <category>Building</category>
+        <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+        <selectable>true</selectable>
+        <thingClass>FrontierDevelopments.RetractableBarriers.Buildings.Building_RetractableBarrier</thingClass>
+        <altitudeLayer>Building</altitudeLayer>
+        <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <filthLeaving>BuildingRubble</filthLeaving>
+        <blockLight>true</blockLight>
+        <drawerType>RealtimeOnly</drawerType>
+        <fillPercent>0.0</fillPercent>
+        <size>(1,1)</size>
+        <rotatable>true</rotatable>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <repairEffect>Repair</repairEffect>
+        <designationCategory>Security</designationCategory>
+        <holdsRoof>false</holdsRoof>
+        <passability>Standable</passability>
+        <tickerType>Normal</tickerType>
+        
+        <defName>Building_RetractableBarrier</defName>
+        <label>Retractable barrier</label>
+        <description>A barrier that can be extended or retracted</description>
+        <researchPrerequisites>
+            <li>RetractableBarrier</li>
+        </researchPrerequisites>
+        <graphicData>
+            <texPath>notused</texPath>
+            <graphicClass>FrontierDevelopments.RetractableBarriers.Graphics.Graphic_RetractableBarrier</graphicClass>
+            <drawSize>(1,1)</drawSize>
+            <shadowData>
+                <volume>(0.3, 0.4, 0.4)</volume>
+                <offset>(0,0,-0.3)</offset>
+            </shadowData>
+        </graphicData>
+        <uiIconPath>Things/Buildings/RetractableBarrier/barrier_horizontal_extended</uiIconPath>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <WorkToBuild>100</WorkToBuild>
+            <Flammability>1.0</Flammability>
+            <Beauty>-3</Beauty>
+        </statBases>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Woody</li>
+            <li>Stony</li>
+        </stuffCategories>
+        <costStuffCount>5</costStuffCount>
+        <costList>
+            <Component>1</Component>
+        </costList>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <basePowerConsumption>5</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Breakdownable"/>
+            <li Class="CompProperties_Flickable"/>
+        </comps>
+    </ThingDef>
+</Defs>
