@@ -63,6 +63,8 @@
         </costList>
         <comps>
             <li Class="FrontierDevelopments.RetractableBarriers.CompProperties.CompProperties_RetractableBarrier">
+                <!-- Needs to be unique for each barrier ThingDef! -->
+                <id>electric_barrier</id>
                 <toggleToilDuration>0</toggleToilDuration>
                 
                 <!-- extended positon stats -->

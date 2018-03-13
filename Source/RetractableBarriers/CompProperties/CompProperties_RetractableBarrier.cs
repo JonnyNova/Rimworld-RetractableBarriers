@@ -5,6 +5,8 @@ namespace FrontierDevelopments.RetractableBarriers.CompProperties
 {
     public class CompProperties_RetractableBarrier : Verse.CompProperties
     {
+        public string id;
+        
         public float toggleToilDuration;
         
         public bool blockLight;
