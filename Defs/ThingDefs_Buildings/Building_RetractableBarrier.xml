@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
     <ThingDef>
-
         <category>Building</category>
         <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
         <selectable>true</selectable>
@@ -9,17 +8,27 @@
         <altitudeLayer>Building</altitudeLayer>
         <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <filthLeaving>BuildingRubble</filthLeaving>
-        <blockLight>true</blockLight>
         <drawerType>RealtimeOnly</drawerType>
-        <fillPercent>0.0</fillPercent>
         <size>(1,1)</size>
         <rotatable>true</rotatable>
         <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
         <repairEffect>Repair</repairEffect>
         <designationCategory>Security</designationCategory>
         <holdsRoof>false</holdsRoof>
-        <passability>Standable</passability>
+        
+        <seeThroughFog>true</seeThroughFog>
+        <coversFloor>false</coversFloor>
+        <blockPlants>true</blockPlants>
+        <blockWind>false</blockWind>
+        <defaultPlacingRot>East</defaultPlacingRot>
+        
         <tickerType>Normal</tickerType>
+        
+        <!-- Retracted position stats -->
+        <blockLight>false</blockLight>
+        <passability>Standable</passability>
+        <fillPercent>0.0</fillPercent>
+        <hideAtSnowDepth>0.0</hideAtSnowDepth>
         
         <defName>Building_RetractableBarrier</defName>
         <label>Retractable barrier</label>
@@ -54,19 +63,15 @@
         </costList>
         <comps>
             <li Class="FrontierDevelopments.RetractableBarriers.CompProperties.CompProperties_RetractableBarrier">
-                <upBlockLight>true</upBlockLight>
-                <upFillPercentage>1.0</upFillPercentage>
-                <upHideAtSnowDepth>99999</upHideAtSnowDepth>
-                <upTraversability>PassThroughOnly</upTraversability>
-                <upPathCost>100</upPathCost>
-
-                <downBlockLight>false</downBlockLight>
-                <downFillPercentage>0.0</downFillPercentage>
-                <downHideAtSnowDepth>0.0</downHideAtSnowDepth>
-                <downTraversability>Standable</downTraversability>
-                <downPathCost>1</downPathCost>
-
                 <toggleToilDuration>0</toggleToilDuration>
+                
+                <!-- extended positon stats -->
+                <blockLight>true</blockLight>
+                <fillPercent>1.0</fillPercent>
+                <hideAtSnowDepth>99999</hideAtSnowDepth>
+                <passability>PassThroughOnly</passability>
+                <pathCost>100</pathCost>
+                <blockWind>true</blockWind>
             </li>
             <li Class="CompProperties_Power">
                 <compClass>CompPowerTrader</compClass>
